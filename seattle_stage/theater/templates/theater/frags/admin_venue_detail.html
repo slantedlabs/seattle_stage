@@ -1,0 +1,75 @@
+<div class="container admin-detail-container">
+  <div class="row">
+    <div class="col-md-3">
+      <span class="admin-detail-label">Name:</span>
+    </div>
+    <div class="col-md-9">
+      {{ venue.name }}
+      {% if venue.brief_name %} ({{ venue.brief_name }}) {% endif %}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <span class="admin-detail-label">Website:</span>
+    </div>
+    <div class="col-md-9">
+      <a href="{{ venue.website_url }}">{{ venue.website_url }}</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="admin-detail-address">
+      <div class="col-md-3">
+        <span class="admin-detail-label">Address:</span>
+      </div>
+      <div class="col-md-9">
+        {{ venue.street_address }} <br/>
+        {{ venue.city }}, {{ venue.state }} {{ venue.zip_code }}
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <span class="admin-detail-label">Picture:</span>
+    </div>
+    <div class="col-md-9">
+      {{ venue.image }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <span class="admin-detail-label">Description:</span>
+    </div>
+    <div class="col-md-9">
+      {{ venue.description }}
+    </div>
+  </div>
+
+  <div class="admin-detail-dash">
+    <div class="admin-detail-dash-button admin-detail-dash-button-delete">
+      <form method="post"
+        action="{% url 'theater:venue_delete' venue_pk=venue.pk %}">
+        {% csrf_token %}
+        <span class="admin-detail-dash-button-delete-pop">
+          <a class="popover-link">
+            <span id="delete-trash" class="glyphicon glyphicon-trash"></span>
+          </a>
+        </span>
+      </form>
+    </div>
+    <div class="admin-detail-dash-button">
+      <a href="{% url 'theater:venue_edit' venue_pk=venue.pk %}">
+        <span class="glyphicon glyphicon-edit"></span>
+      </a>
+    </div>
+    <div class="admin-detail-dash-button">
+      <a href="{% url 'theater:venue_detail' venue_pk=venue.pk %}">
+        <span class="glyphicon glyphicon-eye-open"></span>
+      </a>
+    </div>
+  </div>
+
+</div>

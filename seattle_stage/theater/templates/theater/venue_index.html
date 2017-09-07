@@ -1,0 +1,29 @@
+{% extends 'theater/splash_base.html' %}
+
+{% block jumbotron_content %}
+
+  <div class="jumbo-plain-title">
+    <h1>Venues</h1>
+    <p class="lead">Explore the spaces that bring art to life onstage.</p>
+  </div>
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="filter-dash">
+    {% include 'theater/forms/venue_filter_form.html' with form=venues.form %}
+  </div>
+
+  <div class="container-fluid">
+    {% for venue in venues.qs %}
+    <div class="row">
+      <div class="col-md-12">
+        <h2><a href="{% url 'theater:venue_detail' venue_pk=venue.pk %}">{{ venue.name }}</a></h2>
+        <p>{{ venue.description }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+{% endblock %}

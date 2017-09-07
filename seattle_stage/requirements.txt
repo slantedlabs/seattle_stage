@@ -1,0 +1,10 @@
+Django==1.11.5
+django-filter==1.0.4
+django-markup==1.2
+django-widget-tweaks==1.4.1
+Markdown==2.6.9
+olefile==0.44
+Pillow==4.2.1
+python-dateutil==2.6.1
+pytz==2017.2
+six==1.10.0

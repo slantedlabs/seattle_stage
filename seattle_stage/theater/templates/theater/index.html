@@ -1,0 +1,181 @@
+{% extends 'theater/splash_base.html' %}
+{% load static %}
+{% load events_calendar_tags %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{% static 'theater/index.css' %}">
+  <link rel="stylesheet" href="{% static 'theater/style.css' %}">
+{% endblock %}
+
+
+{% block jumbotron_content %}
+
+  <div class="welcome">
+    <div class="welcome-title">
+      Seattle Stage
+    </div>
+    <div class="welcome-blurb">
+      Connecting Seattle's vibrant theatre scene.
+    </div>
+  </div>
+
+{% endblock %}
+
+
+{% block raw_content %}
+
+<div id="tasha-hello">
+  <a class="enter-link" onclick="enter()">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="enter-text">
+            <h1>"A book must be the axe for the frozen sea within us." <br/>
+              <span class="text-muted">&mdash; Franz Kafka</span></h1>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="tasha-img-wrapper">
+            <img src="{% static 'base/tasha-edgy-fade.png' %}">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>
+
+<div class="index-row-container index-row-container-odd">
+  <div class="container">
+    <div class="row index-row">
+      <div class="col-md-4 index-banner-item">
+        <a href="{% url 'theater:events_month' %}">
+          <span class="glyphicon glyphicon-calendar index-banner-icon"></span>
+          <h2>Find a Show</h2>
+          <p class="lead">There's always a lot going on in the Seattle theater
+          scene. Find the show that's right for you!</p>
+        </a>
+      </div>
+      <div class="col-md-4 index-banner-item">
+        <a href="{% url 'theater:suggestions' %}">
+          <span class="glyphicon glyphicon-thumbs-up index-banner-icon"></span>
+          <h2>Our Suggestions</h2>
+          <p class="lead">Looking for some recommendations? Find out what we
+          liked or are looking forward to.</p>
+        </a>
+      </div>
+      <div class="col-md-4 index-banner-item">
+        <a href="{% url 'theater:scene' %}">
+          <!--<span class="glyphicon glyphicon-user index-banner-icon"></span>-->
+          <span class="index-banner-icon"><i class="fa fa-users" aria-hidden="true"></i></span>
+          <h2>Local Scene</h2>
+          <p class="lead">Find out more about the theater companies and venues
+          that make Seattle one of the best theater cities in the country.</p>
+        </a>
+      </div>
+    </div>
+    {% if events %}
+    <div class="row index-row">
+      <div class="index-calendar-wrapper">
+        <div class="index-calendar">
+          <div class="month-calendar-wrapper">
+            {% events_week_calendar today.year today.month week events %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<div class="index-row-container index-row-container-even">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="index-row-title">Meet Our Team</div>
+      </div>
+    </div>
+    <div class="row index-row">
+      <div class="col-md-3 index-banner-item team-member">
+        <img src="{% static 'base/claire-square.png' %}" alt="Claire Koleske">
+        <div class="team-member-name">Claire Koleske</div>
+        <div class="team-member-tag">Artistic Director <br> 
+          <a class="no-color"
+             href="http://www.frozen-sea-theatre-collective.org/">Frozen Sea
+             Theatre Collective</a></div>
+      </div>
+      <div class="col-md-3 index-banner-item team-member">
+        <img src="{% static 'base/billy-square.png' %}" alt="William Zimmerman">
+        <div class="team-member-name">William Zimmerman</div>
+        <div class="team-member-tag">Artistic Director <br>
+          <a class="no-color"
+             href="http://www.frozen-sea-theatre-collective.org/">Frozen Sea
+             Theatre Collective</a></div>
+      </div>
+      <div class="col-md-3 index-banner-item team-member">
+        <img src="{% static 'base/tasha-edgy-square.png' %}" alt="Tasha Newell">
+        <div class="team-member-name">Tasha Newell</div>
+        <div class="team-member-tag">Muse / Production Manager <br>
+          <a class="no-color"
+             href="http://www.frozen-sea-theatre-collective.org/">Frozen Sea
+             Theatre Collective</a></div>
+      </div>
+      <div class="col-md-3 index-banner-item team-member">
+        <img src="{% static 'base/andrew-square.png' %}" alt="Andrew Milligan">
+        <div class="team-member-name">Andrew Milligan</div>
+        <div class="team-member-tag">Software Engineer <br>
+          <a class="no-color"
+             href="http://www.frozen-sea-theatre-collective.org/">Frozen Sea
+             Theatre Collective</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% if events %}
+<div class="container marketing index-row-container-odd">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="index-row-title index-row-title-even">Featured Productions</div>
+    </div>
+  </div>
+
+  {% for feature in events %}
+  <a class="no-color" href="{% url 'theater:event_detail' event_pk=feature.pk %}">
+    <div class="row featurette index-row">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">
+          {{ feature.name }} </br>
+          <span class="text-muted">by {{ feature.company }}</span>
+        </h2>
+        <p class="lead">{{ feature.blurb }}</p>
+      </div>
+      <div class="col-md-5">
+        <img class="featurette-image img-responsive center-block"
+             src="{{ feature.image.url }}" alt="featurette poster">
+      </div>
+    </div>
+  </a>
+  <hr class="featurette-divider">
+  {% endfor %}
+
+</div>
+{% endif %}
+
+
+{% endblock %}
+
+{% block scripts %}
+
+  <script>
+    function enter() {
+      document.getElementById('tasha-hello').style.display = 'none';
+    }
+      
+    $(document).ready(function (){
+      $('.tasha-img-wrapper').css({'height': $(window).height()});
+      $('.enter-text').css({'margin-top': $(window).height() / 3});
+    });
+  </script>
+
+{% endblock %}

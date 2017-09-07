@@ -1,0 +1,193 @@
+.welcome {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  color: #eee;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.welcome-title {
+  text-transform: uppercase;
+  font-size: 63px;
+  letter-spacing: 3px;
+  font-weight: 200;
+}
+
+.welcome-title:after {
+  content: '';
+  display: block;
+  font-weight: normal;
+  background-color: #eee;
+  width: 0.75em;
+  height: 5px;
+  margin: 0.3em auto;
+}
+
+.welcome-blurb {
+  font-size: 18px;
+  margin-top: 35px;
+}
+
+.index-banner-item {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.index-banner-item a, .index-banner-item a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+.index-banner-icon {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border: 2px solid;
+  border-radius: 50%;
+  font-size: 20px;
+  text-align: center;
+  padding-left: 3px;
+  -webkit-transition: 0.1s background-color linear, 0.1s color linear;
+     -moz-transition: 0.1s background-color linear, 0.1s color linear;
+       -o-transition: 0.1s background-color linear, 0.1s color linear;
+          transition: 0.1s background-color linear, 0.1s color linear;
+}
+
+.index-banner-item:hover .index-banner-icon {
+  color: #fff;
+  background-color: #333;
+  border: 2px solid #333;
+  -webkit-transition: 0.1s background-color linear, 0.1s color linear;
+     -moz-transition: 0.1s background-color linear, 0.1s color linear;
+       -o-transition: 0.1s background-color linear, 0.1s color linear;
+          transition: 0.1s background-color linear, 0.1s color linear;
+}
+
+.index-row {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.index-row-container {
+}
+
+.index-row-container-odd {
+}
+
+.index-row-container-even {
+  color: #fff;
+  background-color: #3d515b;
+}
+
+.team-member img {
+  border-radius: 50%;
+  margin: auto;
+  display: block;
+  width: 100px;
+  height: 100px;
+}
+
+.index-row-title {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 32px;
+}
+
+.index-row-title:after {
+  content: '';
+  display: block;
+  font-weight: normal;
+  background-color: #fff;
+  width: 1em;
+  height: 3px;
+  margin: 0.5em auto;
+}
+
+.index-row-title-even:after {
+  background-color: #333;
+}
+
+.team-member-name {
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: 200;
+}
+
+.team-member-tag {
+  font-size: 16px;
+  font-weight: 200;
+  color: #bbb;
+  font-style: italic;
+}
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: normal;
+}
+.marketing .col-lg-4 p {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.featurette-divider {
+  margin: 80px 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.featurette-image {
+  height: 250px;
+}
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 768px) {
+  /* Navbar positioning foo */
+  .navbar-wrapper {
+    margin-top: 20px;
+  }
+  .navbar-wrapper .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .navbar-wrapper .navbar {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  /* The navbar becomes detached from the top, so we round the corners */
+  .navbar-wrapper .navbar {
+    border-radius: 4px;
+  }
+
+  /* Bump up size of carousel content */
+  .carousel-caption p {
+    margin-bottom: 20px;
+    font-size: 21px;
+    line-height: 1.4;
+  }
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 992px) {
+  .featurette-heading {
+    /*margin-top: 120px;*/
+  }
+}

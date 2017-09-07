@@ -1,0 +1,17 @@
+{% load events_calendar_tags %}
+
+<div class="month-calendar-wrapper" id="month-calendar">
+  {% events_month_calendar year month events %}
+</div>
+
+<div class="month-buttons">
+  <div class="col-sm-4 last-month-button">
+    <a class="fs-btn fs-btn-trans btn" onclick="ajaxUpdateCalendar('{{ last_month }}')">Previous</a>
+  </div>
+  <div class="col-sm-4 this-month-button">
+    <a class="fs-btn fs-btn-trans btn" onclick="ajaxUpdateCalendar('{{ this_month }}')">This Month</a>
+  </div>
+  <div class="col-sm-4 next-month-button">
+    <a class="fs-btn fs-btn-trans btn" onclick="ajaxUpdateCalendar('{{ next_month }}')">Next</a>
+  </div>
+</div>

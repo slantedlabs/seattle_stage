@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}My Account{% endblock %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{% static 'registration/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+  <div class="user-info">
+    <form action="{% url 'email_change' %}" method="post">
+      {% csrf_token %}
+      <input id="id_new_email" name="new_email" type="email" class="form_control" placeholder="New E-Mail"
+        autofocus required/>
+      <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </form>
+  </div>
+
+{% endblock %}

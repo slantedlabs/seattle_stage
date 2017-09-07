@@ -1,0 +1,40 @@
+{% extends 'theater/splash_base.html' %}
+{% load static %}
+
+{% block jumbotron_content %}
+  <div class="jumbo-plain-title">
+    <h1>Featured Productions</h1>
+    <p class="lead">Check out a few shows that we're particularly excited
+    about.</p>
+  </div>
+{% endblock %}
+
+
+{% block content %}
+
+{% for feature in features %}
+  <a class="no-color" href="{% url 'theater:event_detail' event_pk=feature.pk %}">
+    <div class="row">
+      <div class="col-md-7 {% cycle '' 'col-md-push-5' %}">
+
+        <h1>{{ feature.name }}
+          <br/>
+          <span class="text-muted">by {{ feature.company }}</span>
+        </h1>
+
+        <p class="lead">{{ feature.blurb }}</p>
+
+      </div>
+
+      {% if feature.image %}
+      <div class="col-md-5 {% cycle '' 'col-md-pull-7' %}">
+        <img src="{{ feature.image.url }}" height="250px">
+      </div>
+      {% endif %}
+    </div>
+  </a>
+
+  <hr>
+{% endfor %}
+
+{% endblock %}

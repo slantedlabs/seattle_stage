@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %}
+
+{% block jumbotron %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="venue-form">
+    <div class="new-venue-form" id="venue-form">
+      {% url 'theater:venue_new' as post_url %}
+      {% url 'theater:admin_dashboard' as cancel_url %}
+      {% include 'theater/forms/venue_form.html' with post_url=post_url cancel_url=cancel_url %}
+    </div>
+  </div>
+
+{% endblock %}

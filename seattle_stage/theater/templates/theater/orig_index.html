@@ -1,0 +1,89 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{% static 'theater/index.css' %}">
+{% endblock %}
+
+{% block jumbotron_contents %}
+
+  <div class="welcome">
+    <div class="welcome-title">Seattle Stage</div>
+    <div class="welcome-blurb">
+      Connecting Seattle's vibrant theater scene.
+    </div>
+  </div>
+
+{% endblock %}
+
+
+{% block raw_content %}
+
+<div class="index-row-container index-row-container-even">
+  <div class="container">
+    <div class="row index-row">
+      <div class="col-md-4 index-banner-item">
+        <a href="{% url 'theater:events_month' %}">
+          <span class="glyphicon glyphicon-calendar index-banner-icon"></span>
+          <h2>Find a Show</h2>
+          <p class="lead">There's always a lot going on in the Seattle theater
+          scene. Find the show that's right for you!</p>
+        </a>
+      </div>
+      <div class="col-md-4 index-banner-item">
+        <a href="{% url 'theater:suggestions' %}">
+          <span class="glyphicon glyphicon-thumbs-up index-banner-icon"></span>
+          <h2>Our Suggestions</h2>
+          <p class="lead">Looking for some recommendations? Find out what we
+          liked or are looking forward to.</p>
+        </a>
+      </div>
+      <div class="col-md-4 index-banner-item">
+        <a href="{% url 'theater:scene' %}">
+          <span class="glyphicon glyphicon-user index-banner-icon"></span>
+          <h2>Local Scene</h2>
+          <p class="lead">Find out more about the theater companies and venues
+          that make Seattle one of the best theater cities in the country.</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="index-row-container index-row-container-odd">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="index-row-title">Meet Our Team</div>
+      </div>
+    </div>
+    <div class="row index-row">
+      <div class="col-md-3 index-banner-item team-member">
+        <img src="{% static 'base/claire-square.png' %}" alt="Claire Koleske">
+        <div class="team-member-name">Claire Koleske</div>
+        <div class="team-member-tag">Artistic Director <br> Frozen Sea
+          Theatre Collective</div>
+      </div>
+      <div class="col-md-3 index-banner-item team-member">
+        <img src="{% static 'base/billy-square.png' %}" alt="William Zimmerman">
+        <div class="team-member-name">William Zimmerman</div>
+        <div class="team-member-tag">Artistic Director <br> Frozen Sea Theatre
+        Company</div>
+      </div>
+      <div class="col-md-3 index-banner-item team-member">
+        <img src="{% static 'base/tasha-square.png' %}" alt="Tasha Newell">
+        <div class="team-member-name">Tasha Newell</div>
+        <div class="team-member-tag">Production Manager <br> Frozen Sea Theatre
+        Company</div>
+      </div>
+      <div class="col-md-3 index-banner-item team-member">
+        <img src="{% static 'base/andrew-square.png' %}" alt="Andrew Milligan">
+        <div class="team-member-name">Andrew Milligan</div>
+        <div class="team-member-tag">Technical Consultant</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

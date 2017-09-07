@@ -1,0 +1,34 @@
+{% extends 'base/base.html' %}
+
+{% block stylesheets %}
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.45/css/bootstrap-datetimepicker.min.css">
+{% endblock %}
+
+{% block jumbotron %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="event-form">
+    <div class="edit-event-form" id="event-form">
+      {% url 'theater:event_edit' event_pk=event_pk as post_url %}
+      {% url 'theater:admin_dashboard' as cancel_url %}
+      {% include 'theater/forms/event_form.html' with post_url=post_url cancel_url=cancel_url %}
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block scripts %}
+  <script
+    src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+  <script
+    src="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
+  <script>
+    $(function () {
+      $('.datetimepicker').datetimepicker();
+    });
+  </script>
+{% endblock %}
+

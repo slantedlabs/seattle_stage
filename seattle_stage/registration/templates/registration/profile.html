@@ -1,0 +1,48 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}My Account{% endblock %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{% static 'registration/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+  <div class="user-info">
+    <div class="col-md-6 welcome-col">
+      <div class="username">
+        Welcome, {{ user.username }}.
+      </div>
+    </div>
+    <div class="col-md-6 info-col">
+      <table class="table">
+        <tr>
+          <td><strong>Email</strong></td>
+          <td>
+            <span class="email">{{ user.email }}</span>
+            <a id="email-edit-link" href="{% url 'email_change' %}"><span class="glyphicon glyphicon-edit"></span></a>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Topics Posted</strong></td>
+          <td>{{ user_topics }} <span class="balance">/ {{ all_topics }}</span></td>
+        </tr>
+        <tr>
+          <td><strong>Responses Posted</strong></td>
+          <td>{{ user_responses }} <span class="balance">/ {{ all_responses }}</span></td>
+        </tr>
+      </table>
+
+      <div class="links">
+        <div class="password-change">
+          <a class="btn btn-default btn-block" href="{% url 'password_change' %}">Change Password</a>
+        </div>
+        <div class="logout">
+          <a class="btn btn-default btn-block" href="{% url 'logout' %}">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends 'theater/splash_base.html' %}
+{% load events_calendar_tags %}
+{% load static %}
+{% load add_get_parameter %}
+
+
+{% block leaf_stylesheets %}
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.45/css/bootstrap-datetimepicker.min.css">
+{% endblock %}
+
+
+{% block jumbotron_content %}
+  <div class="jumbo-plain-title">
+    <h1>Shows</h1>
+    <p class="lead">Discover the multitude of shows happening in Seattle this
+    month and find the one that's right for you.</p>
+  </div>
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="filter-dash">
+    {% include 'theater/forms/event_filter_form.html' with form=events.form %}
+  </div>
+  <p class="advanced-search-toggle">
+  <a id="advanced-search-toggle" onclick="toggleAdvancedSearch()">Advanced Search</a>
+  </p>
+
+  <div class="month-calendar-wrapper">
+    {% events_week_calendar year month week events.qs %}
+  </div>
+
+  <div class="month-buttons">
+    <div class="col-sm-4 last-month-button">
+      <a class="fs-btn fs-btn-trans btn" href="{% add_get date=last_week %}">Previous</a>
+    </div>
+    <div class="col-sm-4 this-month-button">
+      <a class="fs-btn fs-btn-trans btn" href="{% url 'theater:events_month' %}">This Month</a>
+    </div>
+    <div class="col-sm-4 next-month-button">
+      <a class="fs-btn fs-btn-trans btn" href="{% add_get date=next_week %}">Next</a>
+    </div>
+  </div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+  <script>
+    function toggleAdvancedSearch() {
+      var el = document.getElementById('advanced-search');
+      var trigger = document.getElementById('advanced-search-toggle');
+      var old_style = el.style.display;
+      var new_style, new_content;
+      if (old_style == 'table') {
+        new_style = 'none';
+        new_content = 'Advanced Search';
+      } else {
+        new_style = 'table';
+        new_content = 'Hide Advanced Search';
+      }
+      el.style.display = new_style;
+      trigger.innerHTML = new_content;
+    }
+
+  </script>
+
+  <script
+    src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+  <script
+    src="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
+  <script>
+    $(function () {
+      $('.datetimepicker').datetimepicker({
+        format:'MM/DD/YYYY'
+      });
+    });
+  </script>
+
+{% endblock %}
+

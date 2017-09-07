@@ -1,0 +1,5 @@
+.jumbotron {
+  color: #fff;
+  background-image: url('./dark_sea.jpg');
+  background-attachment: fixed;
+}

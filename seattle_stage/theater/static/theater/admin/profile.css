@@ -1,0 +1,50 @@
+.user-info {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
+  content: " ";
+  display: table;
+}
+
+.username {
+  font-size: 60px;
+}
+
+.welcome-col {
+  background-color: #eee;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  padding-left: 30px;
+}
+
+.info-col {
+  padding-top: 20px;
+}
+
+.links {
+  content: " ";
+  display: table;
+  width: 100%;
+}
+
+.password-change {
+  width: 48%;
+  float: left;
+}
+
+.logout {
+  width: 48%;
+  float: right;
+}
+
+#email-edit-link {
+  color: inherit;
+  float: right;
+}
+
+.balance {
+  float: right;
+  color: #aaa;
+}
+

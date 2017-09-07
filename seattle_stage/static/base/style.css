@@ -1,0 +1,69 @@
+#contentblock-container {
+  margin-top: 60px;
+  padding-bottom: 40px;
+}
+
+.jumbotron.fs-jumbotron {
+  margin-top: 50px;
+  margin-bottom: 60px;
+  padding-top: 60px;
+  color: #fff;
+  background-image: url('./dark_sea.jpg');
+  background-attachment: fixed;
+  border-radius: 0px;
+}
+
+.fs-btn {
+  border: 2px solid #333;
+  border-radius: 0;
+  background-color: transparent;
+  color: #333;
+  text-transform: uppercase;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.fs-btn:hover {
+  background-color: #e6e6e6;
+}
+
+.fs-btn-primary {
+  background-color: #333;
+  color: #fff;
+}
+
+.fs-btn-primary:hover {
+  background-color: #333;
+  color: #ccc;
+}
+
+.fs-btn-trans {
+  font-weight: 400;
+  background-color: transparent;
+  color: #333;
+  -webkit-transition: 0.1s background-color linear, 0.1s color linear;
+     -moz-transition: 0.1s background-color linear, 0.1s color linear;
+       -o-transition: 0.1s background-color linear, 0.1s color linear;
+          transition: 0.1s background-color linear, 0.1s color linear;
+}
+
+.fs-btn-trans:hover {
+  background-color: #333;
+  color: #fff;
+  -webkit-transition: 0.1s background-color linear, 0.1s color linear;
+     -moz-transition: 0.1s background-color linear, 0.1s color linear;
+       -o-transition: 0.1s background-color linear, 0.1s color linear;
+          transition: 0.1s background-color linear, 0.1s color linear;
+}
+
+
+/* Navbar Colors
+ * --------------------------------------------------------------------------*/
+.navbar-default {
+  border-color: #f8f8f8; /* same as background color from BS */
+}
+
+.navbar-default .navbar-brand:hover {
+  color: #3d515b;
+}
+  

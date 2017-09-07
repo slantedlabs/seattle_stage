@@ -1,0 +1,80 @@
+<form action="{{ post_url }}" method="post">
+  {% csrf_token %}
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-12">
+        {{ form.name.label_tag }}
+        {{ form.name }}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-6">
+        {{ form.brief_name.label_tag }}
+        {{ form.brief_name }}
+      </div>
+      <div class="col-md-6">
+        {{ form.website_url.label_tag }}
+        {{ form.website_url }}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-12">
+        {{ form.street_address.label_tag }}
+        {{ form.street_address }}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-8">
+        {{ form.city.label_tag }}
+        {{ form.city }}
+      </div>
+      <div class="col-md-2">
+        {{ form.state.label_tag }}
+        {{ form.state }}
+      </div>
+      <div class="col-md-2">
+        {{ form.zip_code.label_tag }}
+        {{ form.zip_code }}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-12">
+        {{ form.image.label_tag }}
+        {{ form.image }}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    {{ form.description.label_tag }}
+    {{ form.description }}
+  </div>
+
+
+  {% for hidden in form.hidden_fields %}
+    {{ field }}
+  {% endfor %}
+
+
+  <div class="row">
+    <div class="col-sm-6">
+      <a class="fs-btn btn btn-block" href="{{ cancel_url }}">Cancel</a>
+    </div>
+    <div class="col-sm-6">
+      <button type="submit" class="fs-btn fs-btn-primary btn btn-block">Submit</button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,121 @@
+{% load markup_tags %}
+
+<div class="col-md-8">
+  <div class="container-fluid">
+    <h2 class="page-header">
+      {{ event.name }} <br/>
+      <span class="text-muted">by 
+        <a href="{% url 'theater:company_detail' company_pk=event.company.pk %}">{{ event.company }}</a></span>
+    </h2>
+
+    <div class="row">
+      <div class="col-md-12">
+        <p class="lead">
+          {{ event.date_and_time|date:"D, M j, Y g:i A" }} at
+          <a href="{% url 'theater:venue_detail' venue_pk=event.venue.pk %}">
+            {{ event.venue }}
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        {{ event.description|apply_markup:"markdown" }}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="col-md-4">
+  <div class="container-fluid">
+    {% if event.image %}
+    <div class="row">
+      <img src="{{ event.image.url }}" width="100%">
+    </div>
+    {% endif %}
+
+    <div class="row">
+      <div class="col-md-3">
+        <span class="admin-detail-label">Name:</span>
+      </div>
+      <div class="col-md-9">
+        {{ event.name }}
+        {% if event.brief_name %} ({{ event.brief_name }}) {% endif %}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <span class="admin-detail-label">Company:</span>
+      </div>
+      <div class="col-md-9">
+        <a href="{% url 'theater:company_detail' company_pk=event.company.pk %}">
+          {{ event.company }}
+        </a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <span class="admin-detail-label">Venue:</span>
+      </div>
+      <div class="col-md-9">
+        <a href="{% url 'theater:venue_detail' venue_pk=event.venue.pk %}">
+          {{ event.venue }}
+        </a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <span class="admin-detail-label">Date:</span>
+      </div>
+      <div class="col-md-9">
+        {{ event.date_and_time|date:"D, M j, Y g:i A" }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <span class="admin-detail-label">Website:</span>
+      </div>
+      <div class="col-md-9">
+        <a href="{{ event.website_url }}">{{ event.website_url }}</a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <span class="admin-detail-label">Length:</span>
+      </div>
+      <div class="col-md-9">
+        {% if event.show_length %}
+        {{ event.show_length }} hours
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <span class="admin-detail-label">Price:</span>
+      </div>
+      <div class="col-md-9">
+        {% if event.ticket_price %}
+        ${{ event.ticket_price }}
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <span class="admin-detail-label">Tickets:</span>
+      </div>
+      <div class="col-md-9">
+        <a href="{{ event.ticket_url }}">{{ event.ticket_url }}</a>
+      </div>
+    </div>
+
+  </div>
+</div>

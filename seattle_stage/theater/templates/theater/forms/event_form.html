@@ -1,0 +1,132 @@
+<form action="{{ post_url }}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  {% if form.errors %}
+    <div class="alert alert-danger">
+      <span class="glyphicon glyphicon-warning-sign"></span>
+      <strong>Oops.</strong>
+      {% for field, error_msg in form.errors.items %}
+        {{ field }}
+        {{ error_msg }}
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-12">
+        {{ form.name.label_tag }}
+        {{ form.name }}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-6">
+        {{ form.date_and_time.label_tag }}
+        <div class="input-group datetimepicker" id="datetimepicker1">
+          {{ form.date_and_time }}
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
+      </div>
+      <div class="col-md-6">
+        {{ form.brief_name.label_tag }}
+        {{ form.brief_name }}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-6">
+        {{ form.venue.label_tag }}
+        {{ form.venue }}
+      </div>
+      <div class="col-md-6">
+        {{ form.company.label_tag }}
+        {{ form.company }}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-6">
+        {{ form.ticket_price.label_tag }}
+        <div class="input-group">
+          <div class="input-group-addon">$</div>
+          {{ form.ticket_price }}
+        </div>
+      </div>
+      <div class="col-md-6">
+        {{ form.website_url.label_tag }}
+        {{ form.website_url }}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-6">
+        {{ form.ticket_url.label_tag }}
+        {{ form.ticket_url }}
+      </div>
+      <div class="col-md-6">
+        {{ form.show_length.label_tag }}
+        <div class="input-group">
+          {{ form.show_length }}
+          <div class="input-group-addon">hours</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-6">
+        {{ form.image.label_tag }}
+        {{ form.image }}
+      </div>
+      <div class="col-md-6">
+        {{ form.featured.label_tag }}
+        {{ form.featured }}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-12">
+        {{ form.blurb.label_tag }}
+        {{ form.blurb }}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-12">
+        {{ form.description.label_tag }}
+        {{ form.description }}
+      </div>
+    </div>
+  </div>
+
+
+  {% for hidden in form.hidden_fields %}
+    {{ field }}
+  {% endfor %}
+
+
+  <div class="row">
+    <div class="col-sm-6">
+      <a class="fs-btn btn btn-block" href="{{ cancel_url }}">Cancel</a>
+    </div>
+    <div class="col-sm-6">
+      <button type="submit" class="fs-btn fs-btn-primary btn btn-block">Submit</button>
+    </div>
+  </div>
+</form>

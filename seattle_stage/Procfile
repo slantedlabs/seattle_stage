@@ -1,0 +1,1 @@
+web: gunicorn seattle_stage.wsgi --log-file -

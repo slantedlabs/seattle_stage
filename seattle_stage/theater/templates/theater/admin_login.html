@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Login</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'theater/login_style.css' %}">
+
+    <link rel="icon" href="{% static 'base/qfavicon.png' %}">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <form class="form-signin" method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+
+        {% if form.errors %}
+          <div class="alert alert-danger">
+            <span class="glyphicon glyphicon-warning-sign"></span>
+            <strong>Oops.</strong> Your username and password did not match.
+            Please try again.
+          </div>
+        {% endif %}
+
+        {% load widget_tweaks %}
+        {% render_field form.username class="form-control" placeholder="Username" %}
+        {% render_field form.password class="form-control" placeholder="Password" %}
+
+        {% if next %}
+          <input type="hidden" name="next" value="{{ next }}"/>
+        {% else %}
+          <input type="hidden" name="next" value="{% url 'forum:index' %}"/>
+        {% endif %}
+
+        <button class="btn btn-default btn-block" id="login-button" type="submit">
+          Sign In
+        </button>
+      </form>
+
+    </div> <!-- /container -->
+
+  </body>
+</html>
+

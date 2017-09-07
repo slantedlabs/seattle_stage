@@ -1,0 +1,215 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{% static 'registration/admin_dashboard.css' %}">
+{% endblock %}
+
+
+{% block jumbotron_content %}
+  <h1>Admin Dashboard</h1>
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="admin-dash">
+
+    <div class="subdash">
+      <div class="subdash-header">
+        <h3 class="page-header subdash-section-title"
+          onclick='dashboard_section_select("venue-subdash-contents")'>
+          <a>
+            Venue Dashboard <span class="glyphicon glyphicon-chevron-down
+              drop-dash"></span>
+          </a>
+        </h3>
+      </div>
+      <div class="subdash-contents" id="venue-subdash-contents">
+        <div class="col-md-4">
+          <div class="dash-current-list">
+            <ul>
+              {% for venue, vform in venue_form_pairs %}
+                <li><a onclick="toggle_edit_form('{{ venue.slug }}_form')">{{ venue.name }}</a></li>
+              {% endfor %}
+              <li>More</li>
+              <li>More</li>
+              <li>More</li>
+              <li>More</li>
+              <li>More</li>
+              <li>More</li>
+              <li>More</li>
+              <li>More</li>
+              <li>More</li>
+              <li>More</li>
+              <li>More</li>
+              <li>More</li>
+              <li>More</li>
+              <li>More</li>
+              <li>More</li>
+              <li>More</li>
+              <li>More</li>
+              <li>More</li>
+              <li>More</li>
+              <li>More</li>
+              <li>More</li>
+              <li>More</li>
+              <li>More</li>
+              <li>More</li>
+              <li>More</li>
+            </ul>
+
+            <a class="fs-btn fs-btn-trans btn btn-block"
+              href="{% url 'theater:venue_new' %}">New Venue</a>
+          </div>
+        </div>
+
+        <div class="col-md-8">
+          <div class="forms-area">
+            <p class="form-select-explain">Select a venue from the list to see/edit its details.</p>
+            {% for venue, vform in venue_form_pairs %}
+              <div class="subdash-edit-form" id="{{ venue.slug }}_form">
+                {% url 'theater:venue_edit' venue_pk=venue.pk as post_url %}
+                {% include 'theater/forms/venue_form.html' with form=vform post_url=post_url cancel_url="#0" %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="subdash">
+      <div class="subdash-header">
+        <h3 class="page-header subdash-section-title"
+          onclick='dashboard_section_select("company-subdash-contents")'>
+          <a>
+            Company Dashboard <span class="glyphicon glyphicon-chevron-down
+              drop-dash"></span>
+          </a>
+        </h3>
+      </div>
+      <div class="subdash-contents" id="company-subdash-contents">
+        <div class="col-md-4">
+          <div class="dash-current-list">
+            <ul>
+              {% for company, cform in company_form_pairs %}
+                <li><a onclick="toggle_edit_form('{{ company.slug }}_form')">{{ company.name }}</a></li>
+              {% endfor %}
+            </ul>
+
+            <a class="fs-btn fs-btn-trans btn btn-block"
+              href="{% url 'theater:company_new' %}">New Company</a>
+          </div>
+        </div>
+
+        <div class="col-md-8">
+          <div class="forms-area">
+            <p class="form-select-explain">Select a company from the list to see/edit its details.</p>
+            {% for company, cform in company_form_pairs %}
+              <div class="subdash-edit-form" id="{{ company.slug }}_form">
+                {% url 'theater:company_edit' company_pk=company.pk as post_url %}
+                {% include 'theater/forms/company_form.html' with form=cform post_url=post_url cancel_url="#0" %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subdash">
+      <div class="subdash-header">
+        <h3 class="page-header subdash-section-title"
+          onclick='dashboard_section_select("event-subdash-contents")'>
+          <a>
+            Event Dashboard <span class="glyphicon glyphicon-chevron-down
+              drop-dash"></span>
+          </a>
+        </h3>
+      </div>
+      <div class="subdash-contents" id="event-subdash-contents">
+        <div class="col-md-4">
+          <div class="dash-current-list">
+            <ul>
+              {% for event, eform in event_form_pairs %}
+                <li><a onclick="toggle_edit_form('{{ event.slug }}_form')">{{ event.name }}</a></li>
+              {% endfor %}
+            </ul>
+
+            <a class="fs-btn fs-btn-trans btn btn-block"
+              href="{% url 'theater:event_new' %}">New Event</a>
+          </div>
+        </div>
+
+        <div class="col-md-8">
+          <div class="forms-area">
+            <p class="form-select-explain">Select an event from the list to see/edit its details.</p>
+            {% for event, eform in event_form_pairs %}
+              <div class="subdash-edit-form" id="{{ event.slug }}_form">
+                {% url 'theater:event_edit' event_pk=event.pk as post_url %}
+                {% include 'theater/forms/event_form.html' with form=eform post_url=post_url cancel_url="#0" %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-padding-space">
+    </div>
+
+  </div>
+
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    function reset_dashboard_sections() {
+      $('.subdash-contents').each(function () {
+        this.style.display = 'none'
+      });
+      $('.subdash-edit-form').each(function () {
+        this.style.display = 'none'
+      });
+      $('.form-select-explain').each(function () {
+        this.style.display = 'block'
+      });
+    }
+
+    function toggle_edit_form(id) {
+      var trigger_el = document.getElementById(id);
+      if ((trigger_el.style.display == 'none') || (trigger_el.style.display == '')) {
+        var new_trigger_style = 'block';
+        var new_explain_style = 'none';
+      } else {
+        var new_trigger_style = 'none';
+        var new_explain_style = 'block';
+      }
+      /*
+      $('.form-select-explain').each(function () {
+        this.style.display = new_explain_style
+      });
+      $('.subdash-edit-form').each(function () {
+        this.style.display = 'none';
+      });
+      */
+      $(trigger_el).siblings('.form-select-explain').each(function () {
+        this.style.display = new_explain_style
+      });
+      $(trigger_el).siblings('.subdash-edit-form').each(function () {
+        this.style.display = 'none';
+      });
+      document.getElementById(id).style.display = new_trigger_style;
+    }
+
+    function dashboard_section_select(id) {
+      var trigger_el = document.getElementById(id);
+      if (trigger_el.className == 'subdash-contents') {
+        var new_class = 'subdash-contents-show';
+      } else {
+        var new_class = 'subdash-contents';
+      }
+      trigger_el.className = new_class;
+    }
+  </script>
+{% endblock %}

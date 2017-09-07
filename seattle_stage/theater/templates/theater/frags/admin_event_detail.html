@@ -1,0 +1,141 @@
+<div class="container admin-detail-container">
+  <div class="row">
+    <div class="col-md-3">
+      <span class="admin-detail-label">Name:</span>
+    </div>
+    <div class="col-md-9">
+      {{ event.name }}
+      {% if event.brief_name %} ({{ event.brief_name }}) {% endif %}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <span class="admin-detail-label">Featured:</span>
+    </div>
+    <div class="col-md-9">
+      {% if event.featured %}
+      <span class="glyphicon glyphicon-ok"></span>
+      {% else %}
+      <span class="glyphicon glyphicon-remove"></span>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <span class="admin-detail-label">Website:</span>
+    </div>
+    <div class="col-md-9">
+      <a href="{{ event.website_url }}">{{ event.website_url }}</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <span class="admin-detail-label">Company:</span>
+    </div>
+    <div class="col-md-9">
+      {{ event.company }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <span class="admin-detail-label">Venue:</span>
+    </div>
+    <div class="col-md-9">
+      {{ event.venue }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <span class="admin-detail-label">Date:</span>
+    </div>
+    <div class="col-md-9">
+      {{ event.date_and_time|date:"D, M j, Y g:i A" }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <span class="admin-detail-label">Length:</span>
+    </div>
+    <div class="col-md-9">
+      {{ event.show_length }} hours
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <span class="admin-detail-label">Price:</span>
+    </div>
+    <div class="col-md-9">
+      ${{ event.ticket_price }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <span class="admin-detail-label">Tickets:</span>
+    </div>
+    <div class="col-md-9">
+      <a href="{{ event.ticket_url }}">{{ event.ticket_url }}</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <span class="admin-detail-label">Picture:</span>
+    </div>
+    <div class="col-md-9">
+      {{ event.image }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <span class="admin-detail-label">Blurb:</span>
+    </div>
+    <div class="col-md-9">
+      {{ event.blurb }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <span class="admin-detail-label">Description:</span>
+    </div>
+    <div class="col-md-9">
+      {{ event.description }}
+    </div>
+  </div>
+
+  <div class="admin-detail-dash">
+    <div class="admin-detail-dash-button admin-detail-dash-button-delete">
+      <form method="post"
+        action="{% url 'theater:event_delete' event_pk=event.pk %}">
+        {% csrf_token %}
+        <span class="admin-detail-dash-button-delete-pop">
+          <a class="popover-link">
+            <span id="delete-trash" class="glyphicon glyphicon-trash"></span>
+          </a>
+        </span>
+      </form>
+    </div>
+    <div class="admin-detail-dash-button">
+      <a href="{% url 'theater:event_edit' event_pk=event.pk %}">
+        <span class="glyphicon glyphicon-edit"></span>
+      </a>
+    </div>
+    <div class="admin-detail-dash-button">
+      <a href="{% url 'theater:event_detail' event_pk=event.pk %}">
+        <span class="glyphicon glyphicon-eye-open"></span>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+

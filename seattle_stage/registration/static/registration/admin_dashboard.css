@@ -1,0 +1,72 @@
+body {
+  min-height: 1000px;
+}
+
+.subdash-contents {
+  width: 100%;
+  display: block;
+  max-height: 0px;
+  overflow: hidden;
+  -webkit-transition: 0.2s max-height linear;
+     -moz-transition: 0.2s max-height linear;
+       -o-transition: 0.2s max-height linear;
+          transition: 0.2s max-height linear;
+}
+
+.subdash-contents-show {
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  max-height: 800px; /* TODO needs responsiveness tweak */
+  -webkit-transition: 0.2s max-height linear;
+     -moz-transition: 0.2s max-height linear;
+       -o-transition: 0.2s max-height linear;
+          transition: 0.2s max-height linear;
+}
+
+.dash-current-list {
+  width: 100%;
+}
+
+.dash-current-list ul {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  max-height: 400px;
+  overflow: hidden;
+  overflow-y: scroll;
+  border: 1px solid #bbb;
+}
+
+.dash-current-list ul li {
+  cursor: pointer;
+}
+
+.dash-current-list ul li a:hover {
+  text-decoration: none;
+}
+
+.forms-area {
+  max-height: 800px; /* TODO needs responsiveness tweak */
+  overflow: hidden;
+  overflow-y: scroll;
+  border: 1px solid #bbb;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.subdash-edit-form {
+  display: none;
+}
+
+.subdash-section-title a {
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.drop-dash {
+  float: right;
+}
+

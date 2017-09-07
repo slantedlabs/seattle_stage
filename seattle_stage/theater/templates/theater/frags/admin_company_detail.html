@@ -1,0 +1,73 @@
+<div class="container admin-detail-container">
+  <div class="row">
+    <div class="col-md-3">
+      <span class="admin-detail-label">Name:</span>
+    </div>
+    <div class="col-md-9">
+      {{ company.name }}
+      {% if company.brief_name %} ({{ company.brief_name }}) {% endif %}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <span class="admin-detail-label">Website:</span>
+    </div>
+    <div class="col-md-9">
+      <a href="{{ company.website_url }}">{{ company.website_url }}</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <span class="admin-detail-label">Classification:</span>
+    </div>
+    <div class="col-md-9">
+      {{ company.classification }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <span class="admin-detail-label">Picture:</span>
+    </div>
+    <div class="col-md-9">
+      {{ company.image }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <span class="admin-detail-label">Description:</span>
+    </div>
+    <div class="col-md-9">
+      {{ company.description }}
+    </div>
+  </div>
+
+  <div class="admin-detail-dash">
+    <div class="admin-detail-dash-button admin-detail-dash-button-delete">
+      <form method="post"
+        action="{% url 'theater:company_delete' company_pk=company.pk %}">
+        {% csrf_token %}
+        <span class="admin-detail-dash-button-delete-pop">
+          <a class="popover-link">
+            <span id="delete-trash" class="glyphicon glyphicon-trash"></span>
+          </a>
+        </span>
+      </form>
+    </div>
+    <div class="admin-detail-dash-button">
+      <a href="{% url 'theater:company_edit' company_pk=company.pk %}">
+        <span class="glyphicon glyphicon-edit"></span>
+      </a>
+    </div>
+    <div class="admin-detail-dash-button">
+      <a href="{% url 'theater:company_detail' company_pk=company.pk %}">
+        <span class="glyphicon glyphicon-eye-open"></span>
+      </a>
+    </div>
+  </div>
+
+</div>
+

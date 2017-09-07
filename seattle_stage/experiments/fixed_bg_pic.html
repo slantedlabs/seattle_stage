@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/sun_icon.ico">
+
+    <title>Hub: Projects</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./fixed_bg_pic.css">
+
+  </head>
+
+  <body>
+
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Solaflect Software</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../index.html">Hub</a></li>
+            <li><a href="https://solaflectv2.azurewebsites.net/">Portal</a></li>
+            <li class="active"><a href="">Projects</a></li>
+            <li><a href="../vpn_status/index.html">VPN</a></li>
+            <li><a href="../contact/index.html">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+
+
+    <!-- Main component for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Projects</h1>
+        <p> Check out our software projects below to find brief descriptions,
+        point people, and some links to resources and more information. <p>
+      </div>
+    </div>
+
+    <div class="container contents">
+
+      <div class="row">
+<div class="col-md-6">
+<h2>The STC Project</h2>
+<p><strong>Lead:</strong> <a href="../contact/directory/index.html?name=Andrew_Milligan">Andrew Milligan</a></p>
+<p>The STC project encapsulates all of the embedded software development for tracker and heliostat controls. The current state of the art is an embedded, on-the-metal program written in C to be run on a Microchip Pic32 to control Solaflect trackers and heliostats.</p>
+<p><a class="btn btn-default" href="stc/overview.html">View Details >></a></p>
+</div>
+<div class="col-md-6">
+<h2>The Gateway Project</h2>
+<p><strong>Lead:</strong> <a href="../contact/directory/index.html?name=Andrew_Milligan">Andrew Milligan</a></p>
+<p>The Stratosphere Gateway project encapsulates all of the software that runs on a Solaflect Network Gateway to facilitate network communication between a STC and the Cirrus Servers.</p>
+<p><a class="btn btn-default" href="sng/overview.html">View Details >></a></p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6">
+<h2>Solaflect VPN</h2>
+<p><strong>Lead:</strong> <a href="../contact/directory/index.html?name=Andrew_Milligan">Andrew Milligan</a></p>
+<p>The Solaflect VPN was set up as a backend debugging infrastructure tool to allow remote terminal access to Stratosphere Network Gateways. The VPN is administered by a VPN server running OpenVPN. Solaflect developed a suite of tools to help technicias use the VPN for debugging purposes. The tools are mostly written in Bash.</p>
+<p><a class="btn btn-default" href="vpn/overview.html">View Details >></a></p>
+</div>
+<div class="col-md-6">
+<h2>The mkgw Project</h2>
+<p><strong>Lead:</strong> <a href="../contact/directory/index.html?name=Andrew_Milligan">Andrew Milligan</a></p>
+<p>The mkgw package contains tools to provision a new Gateway. This includes setting it up on the VPN, installing the Stratosphere package, installation of all dependencies, and more.</p>
+<p><a class="btn btn-default" href="mkgw/overview.html">View Details >></a></p>
+</div>
+</div>
+
+
+    </div> <!-- /container -->
+
+
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted"> Created for <a href="http://www.solaflect.com">Solaflect Energy</a> by andrew. </p>
+      </div>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  </body>
+</html>

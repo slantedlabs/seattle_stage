@@ -1,0 +1,227 @@
+{% extends 'theater/splash_base.html' %}
+{% load static %}
+
+
+{% block jumbotron_content %}
+  <div class="jumbo-plain-title">
+    <h1>Admin Dashboard</h1>
+  </div>
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="admin-dash">
+
+    <div class="subdash">
+      <div class="subdash-header">
+        <h3 class="page-header subdash-section-title"
+          onclick='dashboard_section_select("venue-subdash-contents")'>
+          <a>
+            Venue Dashboard <span class="glyphicon glyphicon-chevron-down
+              drop-dash"></span>
+          </a>
+        </h3>
+      </div>
+      <div class="subdash-contents" id="venue-subdash-contents">
+        <div class="col-md-4">
+          <div class="dash-current-list">
+            <ul>
+              {% for venue, vform in venue_form_pairs %}
+                <li><a onclick="toggle_edit_form('{{ venue.slug }}_form')">{{ venue.name }}</a></li>
+              {% endfor %}
+            </ul>
+
+            <a class="fs-btn fs-btn-trans btn btn-block"
+              href="{% url 'theater:venue_new' %}">New Venue</a>
+          </div>
+        </div>
+
+        <div class="col-md-8">
+          <div class="forms-area">
+            <p class="form-select-explain">Select a venue from the list to see/edit its details.</p>
+            {% for venue, vform in venue_form_pairs %}
+              <div class="subdash-edit-form" id="{{ venue.slug }}_form">
+                {% include 'theater/frags/admin_venue_detail.html' with venue=venue %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="subdash">
+      <div class="subdash-header">
+        <h3 class="page-header subdash-section-title"
+          onclick='dashboard_section_select("company-subdash-contents")'>
+          <a>
+            Company Dashboard <span class="glyphicon glyphicon-chevron-down
+              drop-dash"></span>
+          </a>
+        </h3>
+      </div>
+      <div class="subdash-contents" id="company-subdash-contents">
+        <div class="col-md-4">
+          <div class="dash-current-list">
+            <ul>
+              {% for company, cform in company_form_pairs %}
+                <li><a onclick="toggle_edit_form('{{ company.slug }}_form')">{{ company.name }}</a></li>
+              {% endfor %}
+            </ul>
+
+            <a class="fs-btn fs-btn-trans btn btn-block"
+              href="{% url 'theater:company_new' %}">New Company</a>
+          </div>
+        </div>
+
+        <div class="col-md-8">
+          <div class="forms-area">
+            <p class="form-select-explain">Select a company from the list to see/edit its details.</p>
+            {% for company, cform in company_form_pairs %}
+              <div class="subdash-edit-form" id="{{ company.slug }}_form">
+                {% include 'theater/frags/admin_company_detail.html' with company=company %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subdash">
+      <div class="subdash-header">
+        <h3 class="page-header subdash-section-title"
+          onclick='dashboard_section_select("event-subdash-contents")'>
+          <a>
+            Event Dashboard <span class="glyphicon glyphicon-chevron-down
+              drop-dash"></span>
+          </a>
+        </h3>
+      </div>
+      <div class="subdash-contents" id="event-subdash-contents">
+        <div class="col-md-4">
+          <div class="dash-current-list">
+            <ul>
+              {% for event, eform in event_form_pairs %}
+                <li>
+                  <a onclick="toggle_edit_form('{{ event.slug }}_form')">{{ event.name }}</a>
+                  {% if event.featured %}
+                  <span class="glyphicon glyphicon-star featured-star"></span>
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+
+            <a class="fs-btn fs-btn-trans btn btn-block"
+              href="{% url 'theater:event_new' %}">New Event</a>
+          </div>
+        </div>
+
+        <div class="col-md-8">
+          <div class="forms-area">
+            <p class="form-select-explain">Select an event from the list to see/edit its details.</p>
+            {% for event, eform in event_form_pairs %}
+              <div class="subdash-edit-form" id="{{ event.slug }}_form">
+                {% include 'theater/frags/admin_event_detail.html' with event=event%}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-padding-space">
+    </div>
+
+  </div>
+
+  <div id="delete-popover-content" style="display: none;">
+    <div class="popover-decision-btn">
+      <a class="close-popover btn btn-default btn-block">Cancel</a>
+    </div>
+    <div class="popover-decision-btn">
+      <button type="submit" class="btn btn-danger btn-block">Delete</button>
+    </div>
+  </div>
+
+
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    function reset_dashboard_sections() {
+      $('.subdash-contents').each(function () {
+        this.style.display = 'none'
+      });
+      $('.subdash-edit-form').each(function () {
+        this.style.display = 'none'
+      });
+      $('.form-select-explain').each(function () {
+        this.style.display = 'block'
+      });
+    }
+
+    function toggle_edit_form(id) {
+      var trigger_el = document.getElementById(id);
+      if ((trigger_el.style.display == 'none') || (trigger_el.style.display == '')) {
+        var new_trigger_style = 'block';
+        var new_explain_style = 'none';
+      } else {
+        var new_trigger_style = 'none';
+        var new_explain_style = 'block';
+      }
+      /*
+      $('.form-select-explain').each(function () {
+        this.style.display = new_explain_style
+      });
+      $('.subdash-edit-form').each(function () {
+        this.style.display = 'none';
+      });
+      */
+      $(trigger_el).siblings('.form-select-explain').each(function () {
+        this.style.display = new_explain_style
+      });
+      $(trigger_el).siblings('.subdash-edit-form').each(function () {
+        this.style.display = 'none';
+      });
+      document.getElementById(id).style.display = new_trigger_style;
+    }
+
+    function dashboard_section_select(id) {
+      var trigger_el = document.getElementById(id);
+      if (trigger_el.className == 'subdash-contents') {
+        var new_class = 'subdash-contents-show';
+      } else {
+        var new_class = 'subdash-contents';
+      }
+      trigger_el.className = new_class;
+    }
+  </script>
+
+  <script>
+    $('.popover-link').popover({
+      html: true,
+      title: 'Really? <a class="popover-x close-popover"><span class="close-popover glyphicon glyphicon-remove"></span></a>',
+      content: $('#delete-popover-content').html(),
+      placement: "top",
+    });
+ 
+    $('.popover-link').on('click', function (e) {
+      e.stopPropagation();
+      (($('.popover-link').not(this).popover('hide').data('bs.popover')||{}).inState||{}).click = false;
+    });
+
+    $(document).on('click', function (e) {
+      $('[data-toggle="popover"],[data-original-title]').each(function () {
+        //the 'is' for buttons that trigger popups
+        //the 'has' for icons within a button that triggers a popup
+        if ((!$(this).is(e.target) && $(this).has(e.target).length === 0 &&
+        $('.popover').has(e.target).length === 0) ||
+        $(e.target).is('.close-popover')) {
+          (($(this).popover('hide').data('bs.popover')||{}).inState||{}).click = false  // fix for BS 3.3.6
+        }
+      });
+    });
+  </script>
+
+{% endblock %}

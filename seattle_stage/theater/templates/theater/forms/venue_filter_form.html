@@ -1,0 +1,32 @@
+<form method="get">
+
+  <div class="simple-search" id="simple-search">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            {{ form.name.label_tag }}
+            {{ form.name }}
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            {{ form.description.label_tag }}
+            {{ form.description }}
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="button-holder">
+            <button type="submit" class="fs-btn fs-btn-trans btn">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</form>
+

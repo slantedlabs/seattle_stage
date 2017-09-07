@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{% static 'theater/style.css' %}">
+  <link rel="stylesheet" href="{% static 'theater/index.css' %}">
+  <link rel="stylesheet" href="{% static 'theater/splash.css' %}">
+  <link rel="stylesheet" href="{% static 'theater/admin/admin_dashboard.css' %}">
+{% endblock %}
+
+
+{% block jumbotron %}
+
+  <div class="jumbotron fs-jumbotron fs-jumbotron-plain">
+    <div class="container">
+      {% block jumbotron_content %}
+      {% endblock %}
+    </div>
+  </div>
+
+{% endblock %}
+
+
+

@@ -1,0 +1,25 @@
+{% extends 'theater/splash_base.html' %}
+
+{% block jumbotron_content %}
+
+  <div class="jumbo-plain-title">
+    <h1>Theatre Companies</h1>
+    <p class="lead">Get to know some of the people who are the beating heart of
+    the Seattle theatre scene, both onstage and off.</p>
+  </div>
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="filter-dash">
+    {% include 'theater/forms/company_filter_form.html' with form=companies.form %}
+  </div>
+
+
+  {% for company in companies.qs %}
+    <h2><a href="{% url 'theater:company_detail' company_pk=company.pk %}">{{ company.name }}</a></h2>
+    <p>{{ company.description }}</p>
+  {% endfor %}
+
+{% endblock %}

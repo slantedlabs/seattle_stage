@@ -1,0 +1,84 @@
+<form method="get">
+
+  <div class="simple-search" id="simple-search">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="form-group">
+            {{ form.name.label_tag }}
+            {{ form.name }}
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="form-group">
+            {{ form.company.label_tag }}
+            {{ form.company }}
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="form-group">
+            {{ form.company_type.label_tag }}
+            {{ form.company_type }}
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="form-group">
+            {{ form.date.label_tag }}
+            <div class="input-group datetimepicker" id="datetimepicker1">
+              {{ form.date }}
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="advanced-search" id="advanced-search">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="form-group">
+              {{ form.venue.label_tag }}
+              {{ form.venue }}
+            </div>
+          </div>
+
+          <div class="col-sm-3">
+            <div class="form-group">
+              {{ form.ticket_price__lt.label_tag }}
+              {{ form.ticket_price__lt }}
+            </div>
+          </div>
+
+          <div class="col-sm-3">
+            <div class="form-group">
+              {{ form.starts_after.label_tag }}
+              {{ form.starts_after }}
+            </div>
+          </div>
+
+          <div class="col-sm-3">
+            <div class="form-group">
+              {{ form.description.label_tag }}
+              {{ form.description }}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-sm-12">
+      <div class="button-holder">
+        <button type="submit" class="fs-btn fs-btn-trans btn">Search</button>
+      </div>
+    </div>
+
+  </div>
+
+</form>
