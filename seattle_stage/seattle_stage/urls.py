@@ -28,6 +28,13 @@ urlpatterns = [
     url(r'^stage/', include('theater.urls')),
     url(r'^registration/', include('registration.urls')),
     url(r'^accounts/', include('registration.urls')),
-    url(r'^static/(?P<path>.*)$', dj_static_serve,
-      {'document_root': settings.STATIC_ROOT}),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if not settings.DEBUG:
+  static_url = '/'.join([p for p in settings.STATIC_URL.split('/') if not p == ''])
+  static_url = ''.join([r'^', static_url, r'/(?P<path>.*)$'])
+  urlpatterns += [
+      url(static_url,
+        dj_static_serve,
+        {'document_root': settings.STATIC_ROOT})
+      ]
