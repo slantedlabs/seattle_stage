@@ -1,4 +1,6 @@
 **.pyc
 
+seattle_stage/NOTES.txt
+
 seattle_stage/seattle_stage/settings_secret.py
 seattle_stage/*.sqlite3
