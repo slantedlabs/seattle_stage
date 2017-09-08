@@ -24,6 +24,7 @@ class Command(BaseCommand):
     name = options['name']
     password = options['password']
     email = options['email']
+    noinput = options['noinput']
 
     if not name and not noinput:
       name = raw_input("Username: ")
