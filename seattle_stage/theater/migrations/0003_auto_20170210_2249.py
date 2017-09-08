@@ -17,7 +17,17 @@ class Migration(migrations.Migration):
             name='name',
             field=models.CharField(max_length=200, unique=True),
         ),
-        migrations.AlterField(
+        # Postgres won't allow this recasting, so remove it and re-add it
+        #migrations.AlterField(
+        #    model_name='event',
+        #    name='show_length',
+        #    field=models.IntegerField(null=True),
+        #),
+        migrations.RemoveField(
+            model_name='event',
+            name='show_length',
+        ),
+        migrations.AddField(
             model_name='event',
             name='show_length',
             field=models.IntegerField(null=True),
